@@ -1,0 +1,27 @@
+{
+  "name": "serverhttphomework",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Nikita-Erema/serverHTTPhomework#readme",
+  "bugs": {
+    "url": "https://github.com/Nikita-Erema/serverHTTPhomework/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nikita-Erema/serverHTTPhomework.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "pino": "^10.1.0",
+    "pino-pretty": "^13.1.2"
+  }
+}
