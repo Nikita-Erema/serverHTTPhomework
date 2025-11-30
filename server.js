@@ -23,6 +23,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/", (res) => {
+  res.body = "HEllo world"
+});
+
 const userState = [];
 app.post("/new-user", async (request, response) => {
   if (Object.keys(request.body).length === 0) {
