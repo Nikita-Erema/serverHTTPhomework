@@ -23,8 +23,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (res) => {
-  res.body = "HEllo world"
+app.get("/", (req, res) => {
+  res.send("Hello world");
 });
 
 const userState = [];
