@@ -23,11 +23,13 @@ app.use((req, res, next) => {
   next();
 });
 
+const userState = [];
+
 app.get("/", (req, res) => {
-  res.send("Hello world");
+  res.json(userState);
 });
 
-const userState = [];
+
 app.post("/new-user", async (request, response) => {
   if (Object.keys(request.body).length === 0) {
     const result = {
