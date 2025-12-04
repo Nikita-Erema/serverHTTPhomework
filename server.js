@@ -23,6 +23,8 @@ app.use((req, res, next) => {
   next();
 });
 
+const server = http.createServer(app);
+const wsServer = new WebSocketServer({ server });
 const userState = [];
 
 app.get("/", (req, res) => {
@@ -46,6 +48,11 @@ app.post("/new-user", async (request, response) => {
       name: name,
     };
     userState.push(newUser);
+    if (wsServer && wsServer.clients) {      
+      [...wsServer.clients]
+        .filter((o) => o.readyState === WebSocket.OPEN)
+        .forEach((o) => o.send(message));
+    }
     const result = {
       status: "ok",
       user: newUser,
@@ -62,8 +69,6 @@ app.post("/new-user", async (request, response) => {
   }
 });
 
-const server = http.createServer(app);
-const wsServer = new WebSocketServer({ server });
 wsServer.on("connection", (ws) => {
   ws.on("message", (msg, isBinary) => {
     const receivedMSG = JSON.parse(msg);
