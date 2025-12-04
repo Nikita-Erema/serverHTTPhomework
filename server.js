@@ -51,7 +51,7 @@ app.post("/new-user", async (request, response) => {
     if (wsServer && wsServer.clients) {      
       [...wsServer.clients]
         .filter((o) => o.readyState === WebSocket.OPEN)
-        .forEach((o) => o.send(message));
+        .forEach((o) => o.send(JSON.stringify(userState)));
     }
     const result = {
       status: "ok",
